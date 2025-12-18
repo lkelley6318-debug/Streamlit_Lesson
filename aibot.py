@@ -49,6 +49,7 @@ api_url="https://api.mistral.ai/v1/chat/completions"):
     except Exception as e:
         return f"Error: {str(e)}"
 
+# Streamed response emulator
 def response_generator():
     response = ai_ask("Pretend you are a very friendly and helpful person.  Please provide a response given the provided context.  Please provide the response only with no before or after commentary.  If there is no context, then please respond with a helpful and warm welcome message.",
                       data=st.session_state.messages,
@@ -56,6 +57,7 @@ def response_generator():
     for word in response.split():
         yield word + " "
         time.sleep(0.05)
+
 
 st.title("Simple chat")
 
